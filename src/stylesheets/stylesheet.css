@@ -1,0 +1,184 @@
+/* Colors
+#d67d7d -- Dark Reddish
+#232323 -- Space Black
+ */
+
+
+
+/* By element+containers ***************/
+body{
+    background-color: #fbd3da;
+    background-image: url('../assets/fallingblossoms.gif');
+}
+#mainContainer{
+    width: 820px;
+    max-width: 100%;
+    margin: auto;
+    border: 4px solid #232323;
+}
+/* @media (min-width: 550px) {
+    .content { flex-direction: column; }
+} */
+.content {
+    display: flex;
+    flex-direction: row;
+    background-color: rgba(255, 255, 255, 0.685);
+}
+#left{
+    width: 40%;
+    flex-direction: row;
+    padding: 1.5rem;
+}
+#right{
+    width: 60%;
+    padding: 1.5rem;
+    flex-direction: row;
+}
+
+/* BY ID *********************/
+#cipher{
+    display: flex; 
+    flex-direction: column;
+}
+#ceasarInput{
+    margin: 4px;
+    padding: 4px;
+}
+#cipher button,
+#cipher input{
+    width: 30%
+}
+#spaceHey{
+    color: white;
+    text-decoration: underline;
+}
+
+#calcForm{
+    display: flex; 
+justify-content: space-around;}
+#calcForm button,
+#calcForm input{
+    width: 40%
+}
+#nameTitle, 
+#nameTitle h1{
+    text-align: right;
+    margin-bottom: 3px;
+}
+#profilePicContainer {
+    border: 2px solid #232323; }
+#profilePic {
+    height: auto;
+    max-width: 100%;
+    display: block; /* removes odd whitespace beneath photo */
+}
+
+#logo {
+    height: auto;
+    width: 15%; }
+#contactInfo p{
+    margin: 2px;
+    padding: 2px;
+}
+#linkedinLogo,
+#GmailLogo,
+#githubLogo{
+    height: 2rem;
+    padding: .4rem .6rem .4rem .6rem;
+}
+#testo{
+    background-image: url('../assets/planetDonutBack.png');
+    background-size: contain;
+}
+
+
+/* BY CLASS ******************/
+
+.primaryContainer{
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    border: 2px solid #60a5fa; }
+.primaryHeader h2{
+    font-weight: bold;
+    margin: 0;
+    background: #60a5fa;
+    color: white; 
+    padding: 2px;
+}
+#skillsContainer{
+    text-align: center;
+}
+.secondaryContainer{
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    border: 3px solid #f48d8d; }
+.secondaryHeader h2{
+    font-weight: 600;
+    color: rgb(255, 255, 255);
+    background: #f48d8d;
+    padding: 2px;
+    margin: 0;
+    padding-left: 5px;}
+.secondaryBody input,
+.secondaryBody button,
+.secondaryBody p,
+.secondaryBody h3{
+    margin: 4px;
+    padding: 4px; }
+.secondaryBody h3{
+    font-weight: bold;
+    color: #232323; }
+.projectContainer p{
+    text-align: justify;
+}
+.projectContainer .projectLink{
+    text-align: right;
+}
+.projectLink, 
+.projectLink a{
+    color: #4a97f5;
+    text-align: right;
+    text-decoration: underline;
+}
+.projectSeparator{
+    width: 90%;
+    height: 3px;
+    background: #f48d8d;
+    margin: 10px auto 10px auto
+}
+/* .projectContainer{
+    margin-top: 30px; }
+.projectContainer:first-of-type{
+    margin-top: inherit
+} */
+
+
+/* background-color: #1c4ed8  good MS blue*/
+#headerContainer {
+    font-family: 'Courier New', monospace;
+    color: white;
+    display: flex;
+    align-items: center;
+    /* background-color: #232323; */
+    /* padding-left: 4rem;
+    padding-right: 1rem; 
+    padding-bottom: 2.5rem; 
+    padding-top: 1.5rem;  */
+}
+.nav {
+    background-color: lightblue;
+}
+.footer {
+    color: white;
+    background-color: #232323;
+    margin: 0;
+    text-align: center; }
+.footer p {
+    margin: 0;
+    padding: 4px;
+}
+
+.contactLinks{
+    display: flex;
+    align-items: center;
+}
