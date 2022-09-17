@@ -1,0 +1,19 @@
+{
+  "files": {
+    "main.css": "/static/css/main.7e516069.css",
+    "main.js": "/static/js/main.3989318c.js",
+    "static/media/planetDonut.jpg": "/static/media/planetDonut.7aeb8040fbfe453c76e6.jpg",
+    "static/media/profilePic.JPG": "/static/media/profilePic.195e4c1740d9c9c8e5b8.JPG",
+    "static/media/planetDonutBack.png": "/static/media/planetDonutBack.c7899cdc8bc55e560eef.png",
+    "static/media/fallingblossoms.gif": "/static/media/fallingblossoms.82453abc6eb1881d7f4d.gif",
+    "static/media/GmailLogo.png": "/static/media/GmailLogo.c52d65f44ed65b856b88.png",
+    "static/media/LinkedInLogo.png": "/static/media/LinkedInLogo.87e77d285d4049c02824.png",
+    "index.html": "/index.html",
+    "main.7e516069.css.map": "/static/css/main.7e516069.css.map",
+    "main.3989318c.js.map": "/static/js/main.3989318c.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.7e516069.css",
+    "static/js/main.3989318c.js"
+  ]
+}
