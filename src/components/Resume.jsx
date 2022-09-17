@@ -1,5 +1,8 @@
-export const Resume = () => {
+import { Vigenere } from './Projects/Vigenere';
+import { BhuttVille } from './Projects/BhuttVille'
 
+
+export const Resume = () => {
     return (
         <div class="container" id="right">
                     <div class="secondaryContainer">
@@ -13,21 +16,15 @@ export const Resume = () => {
     
                             <h3>Specialties:</h3>
                             <p>
-                                {/* <!-- When faced with the ultimatum between a sweet bike, or an okay car, I took the bike. 
-                                This sparked a passion and career for myself. After 4 years in the bike industry, I realized it’s no different than the Tech Industry. 
-                                Problem Solving? Check. Google skills? Check. Copious amounts of coffee with coworkers? Easy. 
-                                Just need some pants that don’t have grease stains and I’m ready to goo! -->
-                                Full Stack Developer, specializing in React for front end, and Postgresql and Node for the back.
-                                I truly enjoy making things from scratch, as it really helps me get a better understanding of the langues and how they work under the hood. */}
+                                Full Stack Developer specializing in Javscript and CSS.
+                                My main jam is React married with Node and Postgres, although I have an ept for learning on the fly and can easily learn new things. 
+                                I truly enjoy making things from scratch, as it really helps me get a better understanding of the langues and how they work under the hood. 
                                 
                             </p>
     
-                            <h3>Hobbies:</h3>
+                            {/* <h3></h3>
                             <p>
-                                In my person life, I enjoy just about any activity that avoids pavement. 
-                                Hiking, mountain biking, and wheelin in the woods are pretty much my favorite things.
-                                Always down to talk about cool trails, restaurants, and breweries! I'm all about discovery!
-                            </p>
+                            </p> */}
     
                         </div>
                     </div>
@@ -62,35 +59,13 @@ export const Resume = () => {
                             </h2>
                         </div>
                         <div class="secondaryBody">
+                            <Vigenere />
     
-    
-                            <div class="projectContainer">
-                                <h3>Vigenere Cipher</h3>
-                                <p id="ceasarMessage">
-                                </p>
-                                <form id="cipher">
-                                    <textarea id="ceasarInput" type="textarea" cols="40" rows="5"></textarea>
-                                    <button id="ceasarCipher">E N C R Y P T</button>
-                                    <button id="ceasarReset">R E S E T</button>
-                                </form>
-                                <p class="projectLink"><a href="https://github.com/j3nkii/ceasarCipher">GitHubRepo</a></p>
-                                <p class="projectLink"><a href="https://j3nkii.github.io/ceasarCipher/">Deployment</a></p>
-                            </div>
+                            <div class="projectSeparator"></div>
+                            
+                            <BhuttVille />
     
                             {/* <!-- <div class="projectSeparator"></div>
-    
-                            <div class="projectContainer">
-                                <h3>BhutVille</h3>
-                                <p>
-                                    Here's my solo project while at Prime Academy. I decided to make a game since I knew I was going to get a more hands on 
-                                    with the tradition full stack content during client projects. This was a great way to delve into object oriented programming, 
-                                    and the concept of finite state machines.
-                                </p>
-                                <p class="projectLink"><a href="https://github.com/j3nkii/BhutVille">GitHubRepo</a></p>
-                                <p class="projectLink"><a href="https://morning-plateau-54243.herokuapp.com/#/home">Deployment</a></p>
-                            </div> -->
-    
-                            <!-- <div class="projectSeparator"></div>
     
                             <div class="projectContainer">
                                 <h3>Salary Calculator</h3>

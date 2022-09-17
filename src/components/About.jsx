@@ -39,10 +39,10 @@ export const About = () => {
                         </div>
                     </div>
                 </div>
-                <iframe 
+                {/* <iframe 
                     src="https://open.spotify.com/embed/track/7G3lxTsMfSx4yarMkfgnTC?theme=0" width="100%" 
                     height="80" frameBorder="0" allowtransparency="true" allow="encrypted-media">
-                </iframe>
+                </iframe> */}
                 <div class="primaryContainer">
                     <div class="primaryHeader">
                         <h2>Interests</h2>

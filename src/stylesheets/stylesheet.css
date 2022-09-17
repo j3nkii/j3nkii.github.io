@@ -3,6 +3,23 @@
 #232323 -- Space Black
  */
 
+ /* MODAL */
+.modal-background{
+    background-color: #0000002d;
+    position: fixed;
+    top:0px;
+    right:0px;
+    bottom:0px;
+    left:0px;
+}
+.modal-content{
+    position: absolute;
+    left: 50%; 
+    top: 50%;
+    transform: translate(-50%, -50%); 
+    /* transform: translate(50%, 50%); */
+}
+
 
 
 /* By element+containers ***************/
@@ -46,7 +63,8 @@ body{
 }
 #cipher button,
 #cipher input{
-    width: 30%
+    margin: 4px 20%;
+    /* padding: 4px 0; */
 }
 #spaceHey{
     color: white;
@@ -89,6 +107,10 @@ justify-content: space-around;}
 #testo{
     background-image: url('../assets/planetDonutBack.png');
     background-size: contain;
+}
+#bhuttville{
+    height: calc(85vw / 2);
+    width: 85vw;
 }
 
 
