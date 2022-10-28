@@ -23,11 +23,11 @@ const threatsInitial = {
 }
 
 export const TicTacTo = (props) => {
-    const [turn, setTurn] = useState(1);
+    const [players, setPlayers] = useState(['PLAYERONE', 'ROBOTRON'])
+    const [turn, setTurn] = useState(0);
     const [winner, setWinner] = useState(null);
     const [boardMap, setBoardMap] = useState(boardInitial);
     const [threats, setThreats] = useState(threatsInitial);
-    console.log('----------------');
     useEffect(() => {
         const {win, player} = checkWinEvent();
         if(win){
@@ -40,32 +40,33 @@ export const TicTacTo = (props) => {
 
 
     useEffect(() => {
-        const currentThreat = threatCheck();
-        if(turn % 2 === 0){
+        if(turn % 2 === 1){
             console.log('ROBO TURN');
-            const currentThreat = threatCheck();
+            // const currentThreat = threatCheck();
             const {nw, n, ne, e, c, w, sw, s, se} = boardMap;
-            if(turn === 2){
+            if(turn === 1){
                 console.log('ROBO FIRST MOVE');
                 if(boardMap.c){
                     //todo randomize corner selection
-                    setBoardMap({...boardMap, nw: 'ROBOTRON'});
-                    setTurn(turn + 1);
+                    writeBlock('nw')
                 } else {
-                    setBoardMap({...boardMap, c: 'ROBOTRON'});
+                    writeBlock('c')
                 }
-            } else if(turn === 4){
+            } else if(turn === 3){
                 console.log('ROBO SECOND MOVE');
-                const currentThreat = threatCheck();
+                if(!threatCheck())return
+                console.log('PAST THREAT');
                 if(c !== 'ROBOTRON'){
                     if(s){
-                        setBoardMap({...boardMap, n: 'ROBOTRON'});
+                        writeBlock('n')
                     }else if(e){
+                        writeBlock('w')
                         setBoardMap({...boardMap, w: 'ROBOTRON'});
                     }
-                } else {
-
                 }
+            }else {
+                console.log('hey');
+                threatCheck()
             }
         }
     }, [turn]);
@@ -73,93 +74,115 @@ export const TicTacTo = (props) => {
 
 
     const threatCheck = () => {
-        console.log('############################THREATS');
-        console.log(threats);
         const keys = Object.keys(threats);
         let currentThreat = '';
         for(let i = 0; i < keys.length; i++){
-            console.log(`${[keys[i]]}: ${threats[keys[i]]}`);
             if(threats[keys[i]] >= 2){
                 currentThreat = keys[i]
             }
         }
-        console.log('CURRENT', currentThreat);
         const {nw, n, ne, e, c, w, sw, s, se} = boardMap;
+        console.log(threats);
+        console.log(currentThreat);
         switch (currentThreat) {
             case 'north':
                 if(!nw){
-                    setBoardMap({...boardMap, nw: 'ROBOTRON'});
+                    // setBoardMap({...boardMap, nw: 'ROBOTRON'});
+                    writeBlock('nw')
                 }else if(!n){
-                    setBoardMap({...boardMap, n: 'ROBOTRON'});
+                    // setBoardMap({...boardMap, n: 'ROBOTRON'});
+                    writeBlock('n')
                 }else if(!ne){
-                    setBoardMap({...boardMap, ne: 'ROBOTRON'});
+                    // setBoardMap({...boardMap, ne: 'ROBOTRON'});
+                    writeBlock('ne')
                 }
                 break;
             case 'eastToWest':
                 if(!e){
-                    setBoardMap({...boardMap, e: 'ROBOTRON'});
+                    // setBoardMap({...boardMap, e: 'ROBOTRON'});
+                    writeBlock('e')
                 }else if(!c){
-                    setBoardMap({...boardMap, c: 'ROBOTRON'});
+                    // setBoardMap({...boardMap, c: 'ROBOTRON'});
+                    writeBlock('c')
                 }else if(!w){
-                    setBoardMap({...boardMap, w: 'ROBOTRON'});
+                    // setBoardMap({...boardMap, w: 'ROBOTRON'});
+                    writeBlock('w')
                 }
                 break;
             case 'south':
                 if(!sw){
-                    setBoardMap({...boardMap, sw: 'ROBOTRON'});
+                    // setBoardMap({...boardMap, sw: 'ROBOTRON'});
+                    writeBlock('sw')
                 }else if(!s){
-                    setBoardMap({...boardMap, s: 'ROBOTRON'});
+                    // setBoardMap({...boardMap, s: 'ROBOTRON'});
+                    writeBlock('s')
                 }else if(!se){
-                    setBoardMap({...boardMap, se: 'ROBOTRON'});
+                    // setBoardMap({...boardMap, se: 'ROBOTRON'});
+                    writeBlock('se')
                 }
                 break;
             case 'east':
                 if(!ne){
-                    setBoardMap({...boardMap, ne: 'ROBOTRON'});
+                    // setBoardMap({...boardMap, ne: 'ROBOTRON'});
+                    writeBlock('ne')
                 }else if(!e){
-                    setBoardMap({...boardMap, e: 'ROBOTRON'});
+                    // setBoardMap({...boardMap, e: 'ROBOTRON'});
+                    writeBlock('e')
                 }else if(!se){
-                    setBoardMap({...boardMap, se: 'ROBOTRON'});
+                    // setBoardMap({...boardMap, se: 'ROBOTRON'});
+                    writeBlock('se')
                 }
                 break;
             case 'northToSouth':
                 if(!n){
-                    setBoardMap({...boardMap, n: 'ROBOTRON'});
+                    // setBoardMap({...boardMap, n: 'ROBOTRON'});
+                    writeBlock('n')
                 }else if(!c){
-                    setBoardMap({...boardMap, c: 'ROBOTRON'});
+                    // setBoardMap({...boardMap, c: 'ROBOTRON'});
+                    writeBlock('c')
                 }else if(!s){
-                    setBoardMap({...boardMap, s: 'ROBOTRON'});
+                    // setBoardMap({...boardMap, s: 'ROBOTRON'});
+                    writeBlock('s')
                 }
                 break;
             case 'west':
                 if(!nw){
-                    setBoardMap({...boardMap, nw: 'ROBOTRON'});
+                    // setBoardMap({...boardMap, nw: 'ROBOTRON'});
+                    writeBlock('nw')
                 }else if(!w){
-                    setBoardMap({...boardMap, w: 'ROBOTRON'});
+                    // setBoardMap({...boardMap, w: 'ROBOTRON'});
+                    writeBlock('w')
                 }else if(!sw){
-                    setBoardMap({...boardMap, sw: 'ROBOTRON'});
+                    // setBoardMap({...boardMap, sw: 'ROBOTRON'});
+                    writeBlock('sw')
                 }
                 break;
             case 'northEastToSouthWest':
                 if(!ne){
-                    setBoardMap({...boardMap, ne: 'ROBOTRON'});
+                    // setBoardMap({...boardMap, ne: 'ROBOTRON'});
+                    writeBlock('ne')
                 }else if(!c){
-                    setBoardMap({...boardMap, c: 'ROBOTRON'});
+                    // setBoardMap({...boardMap, c: 'ROBOTRON'});
+                    writeBlock('c')
                 }else if(!sw){
-                    setBoardMap({...boardMap, sw: 'ROBOTRON'});
+                    // setBoardMap({...boardMap, sw: 'ROBOTRON'});
+                    writeBlock('sw')
                 }
                 break;
             case 'northWestToSouthEast':
                 if(!nw){
-                    setBoardMap({...boardMap, nw: 'ROBOTRON'});
+                    // setBoardMap({...boardMap, nw: 'ROBOTRON'});
+                    writeBlock('nw')
                 }else if(!c){
-                    setBoardMap({...boardMap, c: 'ROBOTRON'});
+                    // setBoardMap({...boardMap, c: 'ROBOTRON'});
+                    writeBlock('c')
                 }else if(!se){
-                    setBoardMap({...boardMap, se: 'ROBOTRON'});
+                    // setBoardMap({...boardMap, se: 'ROBOTRON'});
+                    writeBlock('se')
                 }
                 break;
             default:
-                return 'NONE'
+                return false
                 break;
         }
     }
@@ -167,70 +190,130 @@ export const TicTacTo = (props) => {
 
 
     const writeBlock = (space) => {
-        console.log('#############################WRITE BLOCK');
-        console.log(space.target.id);
-        const markSpace = space.target.id
-        //todo fix to accept a space, not an elemtn
-        setBoardMap({...boardMap, [space.target.id]: 'PLAYERONE'});
-        if(markSpace === 'nw'){
-            setThreats({...threats,
-                north: threats.north + 1,
-                west: threats.west + 1,
-                northWestToSouthEast: threats.northWestToSouthEast +1
-            });
-        }
-        if(markSpace === 'n'){
-            setThreats({...threats,
-                north: threats.north + 1,
-                northToSouth: threats.northToSouth + 1,
-            });
-        }
-        if(markSpace === 'ne'){
-            setThreats({...threats,
-                north: threats.north + 1,
-                east: threats.east + 1,
-                northEastToSouthWest: threats.northEastToSouthWest + 1,
-            });
-        }
-        if(markSpace === 'w'){
-            setThreats({...threats,
-                west: threats.west + 1,
-                eastToWest: threats.eastToWest + 1,
-            });
-        }
-        if(markSpace === 'c'){
-            setThreats({...threats,
-                northToSouth: threats.northToSouth + 1,
-                eastToWest: threats.eastToWest + 1,
-                northEastToSouthWest: threats.northEastToSouthWest + 1,
-                northWestToSouthEast: threats.northWestToSouthEast + 1,
-            });
-        }
-        if(markSpace === 'e'){
-            setThreats({...threats,
-                east: threats.east + 1,
-                eastToWest: threats.northToSouth + 1,
-            });
-        }
-        if(markSpace === 'sw'){
-            setThreats({...threats,
-                west: threats.west + 1,
-                south: threats.south + 1,
-                northEastToSouthWest: threats.northEastToSouthWest + 1,
-            });
-        }
-        if(markSpace === 's'){
-            setThreats({...threats,
-                south: threats.south + 1,
-                northToSouth: threats.northToSouth + 1,
-            });
-        }
-        if(markSpace === 'se'){
-            setThreats({...threats,
-                east: threats.east + 1,
-                south: threats.south + 1,
-                northWestToSouthEast: threats.northWestToSouthEast + 1,
-            });
+        setBoardMap({...boardMap, [space]: players[turn % 2]});
+        if(turn % 2 === 0){
+            console.log('PLAYER TURN');
+            if(space === 'nw'){
+                setThreats({...threats,
+                    north:threats.north + 1,
+                    west: threats.west + 1,
+                    northWestToSouthEast: threats.northWestToSouthEast + 1
+                });
+            }
+            if(space === 'n'){
+                setThreats({...threats,
+                    north: threats.north + 1,
+                    northToSouth: threats.northToSouth + 1
+                });
+            }
+            if(space === 'ne'){
+                setThreats({...threats,
+                    north: threats.north + 1,
+                    east: threats.east + 1,
+                    northEastToSouthWest: threats.northEastToSouthWest + 1,
+                });
+            }
+            if(space === 'w'){
+                setThreats({...threats,
+                    west: threats.west + 1,
+                    eastToWest: threats.eastToWest + 1
+                });
+            }
+            if(space === 'c'){
+                setThreats({...threats,
+                    northToSouth: threats.northToSouth + 1,
+                    eastToWest: threats.eastToWest + 1,
+                    northEastToSouthWest: threats.northEastToSouthWest + 1,
+                    northWestToSouthEast: threats.northWestToSouthEast + 1,
+                });
+            }
+            if(space === 'e'){
+                setThreats({...threats,
+                    east: threats.east + 1,
+                    eastToWest: threats.northToSouth + 1
+                });
+            }
+            if(space === 'sw'){
+                setThreats({...threats,
+                    west: threats.west + 1,
+                    south: threats.south + 1,
+                    northEastToSouthWest: threats.northEastToSouthWest + 1,
+                });
+            }
+            if(space === 's'){
+                setThreats({...threats,
+                    south: threats.south + 1,
+                    northToSouth: threats.northToSouth + 1,
+                });
+            }
+            if(space === 'se'){
+                setThreats({...threats,
+                    east: threats.east + 1,
+                    south: threats.south + 1,
+                    northWestToSouthEast: threats.northWestToSouthEast + 1,
+                });
+            }
+        } else {
+            if(space === 'nw'){
+                setThreats({...threats,
+                    north: false,
+                    west: false,
+                    northWestToSouthEast: false,
+                });
+            }
+            if(space === 'n'){
+                setThreats({...threats,
+                    north: false,
+                    northToSouth: false,
+                });
+            }
+            if(space === 'ne'){
+                setThreats({...threats,
+                    north: false,
+                    east: false,
+                    northEastToSouthWest: false,
+                });
+            }
+            if(space === 'w'){
+                setThreats({...threats,
+                    west: false,
+                    eastToWest: false,
+                });
+            }
+            if(space === 'c'){
+                setThreats({...threats,
+                    northToSouth: false,
+                    eastToWest: false,
+                    northEastToSouthWest: false,
+                    northWestToSouthEast: false,
+                });
+            }
+            if(space === 'e'){
+                setThreats({...threats,
+                    east: false,
+                    eastToWest: false,
+                });
+            }
+            if(space === 'sw'){
+                setThreats({...threats,
+                    west: false,
+                    south: false,
+                    northEastToSouthWest: false,
+                });
+            }
+            if(space === 's'){
+                setThreats({...threats,
+                    south: false,
+                    northToSouth: false,
+                });
+            }
+            if(space === 'se'){
+                setThreats({...threats,
+                    east: false,
+                    south: false,
+                    northWestToSouthEast: false,
+                });
+            }
         }
         setTurn(turn + 1);
     }
@@ -238,6 +321,7 @@ export const TicTacTo = (props) => {
 
 
     const checkWinEvent = () => {
+        console.log(boardMap);
         //NORTH
         if(boardMap.nw && boardMap.nw === boardMap.n && boardMap.nw === boardMap.ne){
             console.log('#######NORTH WIN');
