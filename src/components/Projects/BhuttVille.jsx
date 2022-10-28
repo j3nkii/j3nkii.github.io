@@ -4,7 +4,6 @@ const Modal = ({handleModal}) => {
     return (
         <div onClick={handleModal} className='modal-background'>
             <div className='modal-content'>
-                {/* <h1>X</h1> */}
                 <iframe frameBorder={0} id='bhuttville' src="https://morning-plateau-54243.herokuapp.com/game.html">
                 </iframe>
             </div>

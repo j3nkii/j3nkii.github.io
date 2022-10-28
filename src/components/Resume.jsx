@@ -1,5 +1,6 @@
 import { Vigenere } from './Projects/Vigenere';
 import { BhuttVille } from './Projects/BhuttVille'
+import { Calendar } from './Projects/Calendar/Calendar'
 
 
 export const Resume = () => {
@@ -65,9 +66,11 @@ export const Resume = () => {
                             
                             <BhuttVille />
     
-                            {/* <!-- <div class="projectSeparator"></div>
+                            {/* <div class="projectSeparator"></div> */}
+
+                            <Calendar />
     
-                            <div class="projectContainer">
+                            {/* <div class="projectContainer">
                                 <h3>Salary Calculator</h3>
                                 <p>
                                     This was my first big project with a server. It was pretty cool to see, and learn all the things it takes to set them up.

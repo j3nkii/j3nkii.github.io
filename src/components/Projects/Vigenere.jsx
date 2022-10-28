@@ -1,14 +1,15 @@
 import { useState } from 'react';
 
 export const Vigenere = () => {
-    const initialMessage = 'I thought this one was super fun, it actually started from a code wars Kata base off of the ceasar cipher!'
+    const initialMessage = 'Type in the message to be encrypted here, then type in the code used to encrypt / decrypt down below';
     const [message, setMessage] = useState(initialMessage);
     // const [encryptedMessage, setEncryptedMessage] = useState('');
     const [encryptionCode, setEncryptionCode] = useState('');
 
     function reset(event){
         event.preventDefault();
-        setMessage('')
+        setMessage('');
+        setEncryptionCode('');
     }
 
     const handleMessage = (e) => {
@@ -54,7 +55,7 @@ export const Vigenere = () => {
                 except the Vigenere uses multiple values to encode the message!
             </p>
             <form id="cipher">
-                <textarea onChange={e => handleMessage(e)} id="ceasarInput" type="textarea" cols="40" rows="5" value={message}></textarea>
+                <textarea onChange={e => handleMessage(e)} placeholder='Type in your message here,' id="ceasarInput" type="textarea" cols="40" rows="5" value={message}></textarea>
                 <input id='vigenere-encoder' onChange={e => setEncryptionCode(e.target.value)} value={encryptionCode}></input>
                 <button onClick={e => vigenere(e, false)} id="ceasarCipher">E N C R Y P T</button>
                 <button onClick={e => vigenere(e, true)} id="ceasarCipher">D E C R Y P T</button>

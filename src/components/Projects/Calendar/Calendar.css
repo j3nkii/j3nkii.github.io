@@ -1,0 +1,105 @@
+
+/* --------------------------------------------------------------------------------
+Calendar
+-------------------------------------------------------------------------------- */
+  
+  .calendar-container {
+    /* width: 45rem;
+    height: 52rem; */
+    color: #eee;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    /* margin: 8px; */
+  }
+  
+  .calendar {
+    /* width: 100%;
+    height: 100%; */
+    background-color: white;
+    /* box-shadow: .5rem 3rem rgba(0, 0, 0, 0.4); */
+  }
+  
+  .month {
+    width: 100%;
+    height: 12rem;
+    background-color: #f48d8d;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* padding: 0 2rem; */
+    text-align: center;
+    /* text-shadow: .3rem .5rem rgb(0, 0, 0, 0.45); */
+  }
+  
+  .month h1 {
+    font-size: 3rem;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: .2rem;
+    margin-bottom: 1rem;
+  }
+  
+  .month p {
+    font-size: 1.6rem;
+  }
+  .cal-button{
+    background-color: #262626 ;
+  }
+  
+  .weekdays {
+    width: 100%;
+    height: 5rem;
+    display: flex;
+    align-items: center;
+  }
+  
+  .weekdays div {
+    font-size: 1.5rem;
+    font-weight: 400;
+    letter-spacing: .2rem;
+    width: calc(100%/7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .days {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  
+  .days div {
+    font-size: 1.4rem;
+    margin: .3rem;
+    width: calc((100% / 7) - 1.2rem);
+    height: 5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color .2s;
+    border: .2rem solid rgba(255, 255, 255, 0);
+  }
+  
+  .days div:hover:not(.today) {
+    background-color: #262626;
+    border: .2rem solid #777;
+    cursor: pointer;
+  }
+  
+  .shadow-days{
+    opacity: .2;
+    color: black;
+  }
+  .active-days{
+    color: black;
+  }
+  .selected{
+    background-color: #bfdbfe;
+  }
+  .selected:hover{
+    background-color: #60a5fa !important;
+  }
