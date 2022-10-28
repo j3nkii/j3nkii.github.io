@@ -28,7 +28,6 @@ export const TicTacTo = (props) => {
     const [boardMap, setBoardMap] = useState(boardInitial);
     const [threats, setThreats] = useState(threatsInitial);
     console.log('----------------');
-    console.log(turn);
     useEffect(() => {
         const {win, player} = checkWinEvent();
         if(win){
@@ -38,10 +37,13 @@ export const TicTacTo = (props) => {
         }
     }, [boardMap]);
 
+
+
     useEffect(() => {
         const currentThreat = threatCheck();
         if(turn % 2 === 0){
             console.log('ROBO TURN');
+            const currentThreat = threatCheck();
             const {nw, n, ne, e, c, w, sw, s, se} = boardMap;
             if(turn === 2){
                 console.log('ROBO FIRST MOVE');
@@ -68,6 +70,8 @@ export const TicTacTo = (props) => {
         }
     }, [turn]);
 
+
+
     const threatCheck = () => {
         console.log('############################THREATS');
         console.log(threats);
@@ -80,28 +84,87 @@ export const TicTacTo = (props) => {
             }
         }
         console.log('CURRENT', currentThreat);
+        const {nw, n, ne, e, c, w, sw, s, se} = boardMap;
         switch (currentThreat) {
             case 'north':
+                if(!nw){
+                    setBoardMap({...boardMap, nw: 'ROBOTRON'});
+                }else if(!n){
+                    setBoardMap({...boardMap, n: 'ROBOTRON'});
+                }else if(!ne){
+                    setBoardMap({...boardMap, ne: 'ROBOTRON'});
+                }
                 break;
             case 'eastToWest':
+                if(!e){
+                    setBoardMap({...boardMap, e: 'ROBOTRON'});
+                }else if(!c){
+                    setBoardMap({...boardMap, c: 'ROBOTRON'});
+                }else if(!w){
+                    setBoardMap({...boardMap, w: 'ROBOTRON'});
+                }
                 break;
             case 'south':
+                if(!sw){
+                    setBoardMap({...boardMap, sw: 'ROBOTRON'});
+                }else if(!s){
+                    setBoardMap({...boardMap, s: 'ROBOTRON'});
+                }else if(!se){
+                    setBoardMap({...boardMap, se: 'ROBOTRON'});
+                }
                 break;
             case 'east':
+                if(!ne){
+                    setBoardMap({...boardMap, ne: 'ROBOTRON'});
+                }else if(!e){
+                    setBoardMap({...boardMap, e: 'ROBOTRON'});
+                }else if(!se){
+                    setBoardMap({...boardMap, se: 'ROBOTRON'});
+                }
                 break;
             case 'northToSouth':
+                if(!n){
+                    setBoardMap({...boardMap, n: 'ROBOTRON'});
+                }else if(!c){
+                    setBoardMap({...boardMap, c: 'ROBOTRON'});
+                }else if(!s){
+                    setBoardMap({...boardMap, s: 'ROBOTRON'});
+                }
                 break;
             case 'west':
+                if(!nw){
+                    setBoardMap({...boardMap, nw: 'ROBOTRON'});
+                }else if(!w){
+                    setBoardMap({...boardMap, w: 'ROBOTRON'});
+                }else if(!sw){
+                    setBoardMap({...boardMap, sw: 'ROBOTRON'});
+                }
                 break;
             case 'northEastToSouthWest':
+                if(!ne){
+                    setBoardMap({...boardMap, ne: 'ROBOTRON'});
+                }else if(!c){
+                    setBoardMap({...boardMap, c: 'ROBOTRON'});
+                }else if(!sw){
+                    setBoardMap({...boardMap, sw: 'ROBOTRON'});
+                }
                 break;
             case 'northWestToSouthEast':
+                if(!nw){
+                    setBoardMap({...boardMap, nw: 'ROBOTRON'});
+                }else if(!c){
+                    setBoardMap({...boardMap, c: 'ROBOTRON'});
+                }else if(!se){
+                    setBoardMap({...boardMap, se: 'ROBOTRON'});
+                }
                 break;
             default:
+                return 'NONE'
                 break;
         }
-        console.log('#############################');
     }
+
+
 
     const writeBlock = (space) => {
         console.log('#############################WRITE BLOCK');
@@ -109,7 +172,6 @@ export const TicTacTo = (props) => {
         const markSpace = space.target.id
         //todo fix to accept a space, not an elemtn
         setBoardMap({...boardMap, [space.target.id]: 'PLAYERONE'});
-        const newThreats = {...threats}
         if(markSpace === 'nw'){
             setThreats({...threats,
                 north: threats.north + 1,
@@ -170,41 +232,11 @@ export const TicTacTo = (props) => {
                 northWestToSouthEast: threats.northWestToSouthEast + 1,
             });
         }
-
-
-
-
-        switch (space.target.id) {
-            case 'nw' || 'n' || 'ne':
-                setThreats({...threats, north: threats.north + 1});
-                break;
-            case 'w' || 'c' || 'e':
-                setThreats({...threats, eastToWest: threats.eastToWest + 1});
-                break;
-            case 'sw' || 's' || 'se':
-                setThreats({...threats, south: threats.south + 1});
-                break;
-            case 'nw' || 'w' || 'sw':
-                setThreats({...threats, west: threats.west + 1});
-                break;
-            case 'n' || 'c' || 's':
-                setThreats({...threats, northToSouth: threats.northToSouth + 1});
-                break;
-            case 'ne' || 'e' || 'se':
-                setThreats({...threats, east: threats.east + 1});
-                break;
-            case 'nw' || 'c' || 'se':
-                setThreats({...threats, northWestToSouthEast: threats.northWestToSouthEast + 1});
-                break;
-            case 'ne' || 'c' || 'sw':
-                setThreats({...threats, northEastToSouthWest: threats.northEastToSouthWest + 1});
-                break;
-            default:
-                break;
-        }
         setTurn(turn + 1);
-        console.log('#############################');
     }
+
+
+
     const checkWinEvent = () => {
         //NORTH
         if(boardMap.nw && boardMap.nw === boardMap.n && boardMap.nw === boardMap.ne){
@@ -263,19 +295,19 @@ export const TicTacTo = (props) => {
                     WINNER {winner}
                 </div>
                 <div className='ttt-row'>
-                    <div id='nw' onClick={e => writeBlock(e)} className='north-west corner ttt-square'>{boardMap.nw}</div>
-                    <div id='n' onClick={e => writeBlock(e)}  className='north side ttt-square'>{boardMap.n}</div>
-                    <div id='ne' onClick={e => writeBlock(e)}  className='north-east corner ttt-square'>{boardMap.ne}</div>
+                    <div id='nw' onClick={e => writeBlock('nw')} className='north-west corner ttt-square'>{boardMap.nw}</div>
+                    <div id='n' onClick={e => writeBlock('n')}  className='north side ttt-square'>{boardMap.n}</div>
+                    <div id='ne' onClick={e => writeBlock('ne')}  className='north-east corner ttt-square'>{boardMap.ne}</div>
                 </div>
                 <div className='ttt-row'>
-                    <div id='w' onClick={e => writeBlock(e)}  className='west side ttt-square'>{boardMap.w}</div>
-                    <div id='c' onClick={e => writeBlock(e)}  className='center ttt-square'>{boardMap.c}</div>
-                    <div id='e' onClick={e => writeBlock(e)}  className='east side ttt-square'>{boardMap.e}</div>
+                    <div id='w' onClick={e => writeBlock('w')}  className='west side ttt-square'>{boardMap.w}</div>
+                    <div id='c' onClick={e => writeBlock('c')}  className='center ttt-square'>{boardMap.c}</div>
+                    <div id='e' onClick={e => writeBlock('e')}  className='east side ttt-square'>{boardMap.e}</div>
                 </div>
                 <div className='ttt-row'>
-                    <div id='sw' onClick={e => writeBlock(e)}  className='south-west corner ttt-square'>{boardMap.sw}</div>
-                    <div id='s' onClick={e => writeBlock(e)}  className='south side ttt-square'>{boardMap.s}</div>
-                    <div id='se' onClick={e => writeBlock(e)}  className='south-east corner ttt-square'>{boardMap.se}</div>
+                    <div id='sw' onClick={e => writeBlock('sw')}  className='south-west corner ttt-square'>{boardMap.sw}</div>
+                    <div id='s' onClick={e => writeBlock('s')}  className='south side ttt-square'>{boardMap.s}</div>
+                    <div id='se' onClick={e => writeBlock('se')}  className='south-east corner ttt-square'>{boardMap.se}</div>
                 </div>
             </div>
         </div>
