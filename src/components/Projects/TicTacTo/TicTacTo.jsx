@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import './TicTacTo.css';
-const players = ['Player 1', 'Player 2'];
 const boardInitial = {
     nw: null,
     n: null,
@@ -11,25 +10,200 @@ const boardInitial = {
     sw: null,
     s: null,
     se: null,
+};
+const threatsInitial = {
+    north: 0,
+    eastToWest: 0,
+    south: 0,
+    east: 0,
+    northToSouth: 0,
+    west: 0,
+    northWestToSouthEast: 0,
+    northEastToSouthWest: 0
 }
 
 export const TicTacTo = (props) => {
-    const [turn, setTurn] = useState(0);
+    const [turn, setTurn] = useState(1);
     const [winner, setWinner] = useState(null);
     const [boardMap, setBoardMap] = useState(boardInitial);
+    const [threats, setThreats] = useState(threatsInitial);
+    console.log('----------------');
+    console.log(turn);
     useEffect(() => {
         const {win, player} = checkWinEvent();
-        console.log(win);
         if(win){
-            setTurn(0);
+            setTurn(1);
             setWinner(player)
             setBoardMap(boardInitial);
         }
     }, [boardMap]);
+
+    useEffect(() => {
+        const currentThreat = threatCheck();
+        if(turn % 2 === 0){
+            console.log('ROBO TURN');
+            const {nw, n, ne, e, c, w, sw, s, se} = boardMap;
+            if(turn === 2){
+                console.log('ROBO FIRST MOVE');
+                if(boardMap.c){
+                    //todo randomize corner selection
+                    setBoardMap({...boardMap, nw: 'ROBOTRON'});
+                    setTurn(turn + 1);
+                } else {
+                    setBoardMap({...boardMap, c: 'ROBOTRON'});
+                }
+            } else if(turn === 4){
+                console.log('ROBO SECOND MOVE');
+                const currentThreat = threatCheck();
+                if(c !== 'ROBOTRON'){
+                    if(s){
+                        setBoardMap({...boardMap, n: 'ROBOTRON'});
+                    }else if(e){
+                        setBoardMap({...boardMap, w: 'ROBOTRON'});
+                    }
+                } else {
+
+                }
+            }
+        }
+    }, [turn]);
+
+    const threatCheck = () => {
+        console.log('############################THREATS');
+        console.log(threats);
+        const keys = Object.keys(threats);
+        let currentThreat = '';
+        for(let i = 0; i < keys.length; i++){
+            console.log(`${[keys[i]]}: ${threats[keys[i]]}`);
+            if(threats[keys[i]] >= 2){
+                currentThreat = keys[i]
+            }
+        }
+        console.log('CURRENT', currentThreat);
+        switch (currentThreat) {
+            case 'north':
+                break;
+            case 'eastToWest':
+                break;
+            case 'south':
+                break;
+            case 'east':
+                break;
+            case 'northToSouth':
+                break;
+            case 'west':
+                break;
+            case 'northEastToSouthWest':
+                break;
+            case 'northWestToSouthEast':
+                break;
+            default:
+                break;
+        }
+        console.log('#############################');
+    }
+
     const writeBlock = (space) => {
-        const currentPlayer = turn % 2
-        setBoardMap({...boardMap, [space.target.id]: players[currentPlayer]});
+        console.log('#############################WRITE BLOCK');
+        console.log(space.target.id);
+        const markSpace = space.target.id
+        //todo fix to accept a space, not an elemtn
+        setBoardMap({...boardMap, [space.target.id]: 'PLAYERONE'});
+        const newThreats = {...threats}
+        if(markSpace === 'nw'){
+            setThreats({...threats,
+                north: threats.north + 1,
+                west: threats.west + 1,
+                northWestToSouthEast: threats.northWestToSouthEast +1
+            });
+        }
+        if(markSpace === 'n'){
+            setThreats({...threats,
+                north: threats.north + 1,
+                northToSouth: threats.northToSouth + 1,
+            });
+        }
+        if(markSpace === 'ne'){
+            setThreats({...threats,
+                north: threats.north + 1,
+                east: threats.east + 1,
+                northEastToSouthWest: threats.northEastToSouthWest + 1,
+            });
+        }
+        if(markSpace === 'w'){
+            setThreats({...threats,
+                west: threats.west + 1,
+                eastToWest: threats.eastToWest + 1,
+            });
+        }
+        if(markSpace === 'c'){
+            setThreats({...threats,
+                northToSouth: threats.northToSouth + 1,
+                eastToWest: threats.eastToWest + 1,
+                northEastToSouthWest: threats.northEastToSouthWest + 1,
+                northWestToSouthEast: threats.northWestToSouthEast + 1,
+            });
+        }
+        if(markSpace === 'e'){
+            setThreats({...threats,
+                east: threats.east + 1,
+                eastToWest: threats.northToSouth + 1,
+            });
+        }
+        if(markSpace === 'sw'){
+            setThreats({...threats,
+                west: threats.west + 1,
+                south: threats.south + 1,
+                northEastToSouthWest: threats.northEastToSouthWest + 1,
+            });
+        }
+        if(markSpace === 's'){
+            setThreats({...threats,
+                south: threats.south + 1,
+                northToSouth: threats.northToSouth + 1,
+            });
+        }
+        if(markSpace === 'se'){
+            setThreats({...threats,
+                east: threats.east + 1,
+                south: threats.south + 1,
+                northWestToSouthEast: threats.northWestToSouthEast + 1,
+            });
+        }
+
+
+
+
+        switch (space.target.id) {
+            case 'nw' || 'n' || 'ne':
+                setThreats({...threats, north: threats.north + 1});
+                break;
+            case 'w' || 'c' || 'e':
+                setThreats({...threats, eastToWest: threats.eastToWest + 1});
+                break;
+            case 'sw' || 's' || 'se':
+                setThreats({...threats, south: threats.south + 1});
+                break;
+            case 'nw' || 'w' || 'sw':
+                setThreats({...threats, west: threats.west + 1});
+                break;
+            case 'n' || 'c' || 's':
+                setThreats({...threats, northToSouth: threats.northToSouth + 1});
+                break;
+            case 'ne' || 'e' || 'se':
+                setThreats({...threats, east: threats.east + 1});
+                break;
+            case 'nw' || 'c' || 'se':
+                setThreats({...threats, northWestToSouthEast: threats.northWestToSouthEast + 1});
+                break;
+            case 'ne' || 'c' || 'sw':
+                setThreats({...threats, northEastToSouthWest: threats.northEastToSouthWest + 1});
+                break;
+            default:
+                break;
+        }
         setTurn(turn + 1);
+        console.log('#############################');
     }
     const checkWinEvent = () => {
         //NORTH
