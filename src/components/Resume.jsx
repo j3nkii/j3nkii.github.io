@@ -1,6 +1,7 @@
 import { Vigenere } from './Projects/Vigenere';
 import { BhuttVille } from './Projects/BhuttVille'
 import { Calendar } from './Projects/Calendar/Calendar'
+import { TicTacTo } from './Projects/TicTacTo/TicTacTo'
 
 
 export const Resume = () => {
@@ -13,8 +14,6 @@ export const Resume = () => {
                             </h2>
                         </div>
                         <div class="secondaryBody">
-                            
-    
                             <h3>Specialties:</h3>
                             <p>
                                 Full Stack Developer specializing in Javscript and CSS.
@@ -22,14 +21,8 @@ export const Resume = () => {
                                 I truly enjoy making things from scratch, as it really helps me get a better understanding of the langues and how they work under the hood. 
                                 
                             </p>
-    
-                            {/* <h3></h3>
-                            <p>
-                            </p> */}
-    
                         </div>
                     </div>
-    
                     <div class="secondaryContainer">
                         <div class="secondaryHeader">
                             <h2>
@@ -41,14 +34,6 @@ export const Resume = () => {
                                     Node.js • JavaScript • CSS • BootStrap • Material UI • HTML5 • React • Redux 
                                     • Sagas • SQL • PostgreSQL • jQuery • RegExp • Stripe • Kendo 
                                 </p>
-    
-                                {/* <!-- <h3>Soft Skills:</h3>
-                                <p class="skillsList">
-                                    Problem Solving • Ability to read technical documents 
-                                    • Conflict resolution • Rapid learning techniques
-                                    <br>
-                                    • Shredding Gnar •
-                                </p> --> */}
                             </div>
                         </div>
                     </div>
@@ -66,10 +51,10 @@ export const Resume = () => {
                             
                             <BhuttVille />
     
-                            {/* <div class="projectSeparator"></div> */}
 
                             <Calendar />
-    
+                            <div class="projectSeparator"></div>
+                            <TicTacTo />
                             {/* <div class="projectContainer">
                                 <h3>Salary Calculator</h3>
                                 <p>
