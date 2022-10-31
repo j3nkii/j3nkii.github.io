@@ -46,12 +46,9 @@ export const Resume = () => {
                         </div>
                         <div class="secondaryBody">
                             <Vigenere />
-    
                             <div class="projectSeparator"></div>
-                            
                             <BhuttVille />
-    
-
+                            <div class="projectSeparator"></div>
                             <Calendar />
                             <div class="projectSeparator"></div>
                             <TicTacTo />

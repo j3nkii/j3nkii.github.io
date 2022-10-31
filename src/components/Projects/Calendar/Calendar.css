@@ -84,7 +84,7 @@ Calendar
     border: .2rem solid rgba(255, 255, 255, 0);
   }
   
-  .days div:hover:not(.today) {
+  .days div:hover {
     background-color: #262626;
     border: .2rem solid #777;
     cursor: pointer;
@@ -102,4 +102,9 @@ Calendar
   }
   .selected:hover{
     background-color: #60a5fa !important;
+  }
+
+  .today{
+    border: 2px solid rgba(0, 0, 0, 0.443) !important;
+    border-radius: 10px;
   }

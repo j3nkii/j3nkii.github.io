@@ -12,9 +12,13 @@ const CalendarDays = ({date, currentMonth, selectDay, selectedDates}) => {
             className += 'active-days '
         }
         if(selectedDates[0] === currentDate && !selectedDates[1]){
-            className += 'selected'
+            className += 'selected '
         } else if(selectedDates[0] && selectedDates[1] && currentDate >= selectedDates[0] && currentDate <= selectedDates[1]){
-            className += 'selected'
+            className += 'selected '
+        }
+        console.log(date.toISOString().slice(0, 10), new Date().toISOString().slice(0, 10));
+        if(date.toISOString().slice(0, 10) === new Date().toISOString().slice(0, 10)){
+            className += 'today '
         }
         return className
     }

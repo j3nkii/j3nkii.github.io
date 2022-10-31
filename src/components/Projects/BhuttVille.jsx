@@ -24,6 +24,7 @@ export const BhuttVille = () => {
                 Here's my solo project while at Prime Academy. I decided to make a game since I knew I was going to get a more hands on 
                 with the tradition full stack content during client projects. This was a great way to delve into object oriented programming, 
                 and the concept of finite state machines.
+                <br></br>P.S. Game take a minute to load.
             </p>
             <button onClick={handleModal}>Play Game</button>
             <p class="projectLink"><a href="https://github.com/j3nkii/BhutVille">GitHubRepo</a></p>

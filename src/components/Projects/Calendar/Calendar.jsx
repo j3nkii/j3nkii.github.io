@@ -43,10 +43,10 @@ export const Calendar = (props) => {
         }
         setDates(dates)
     }
-    console.log('###SELECTED DATES');
-    console.log(selectedDates);
     return (
         <div className='projectContainer'>
+            <h3>Date Range Picker</h3>
+            <button onClick={() => setSelectedDates([null, null])}>Clear</button>
             <div className='calendar-container'>
                 <div className='calendar'>
                     <div className='month'>
