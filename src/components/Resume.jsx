@@ -41,6 +41,17 @@ export const Resume = () => {
                     <div class="secondaryContainer">
                         <div class="secondaryHeader">
                             <h2>
+                                Currently Under Construction
+                            </h2>
+                        </div>
+                        <div class="secondaryBody">
+                            Currently working on updating this site along with my resume.
+                        </div>
+                    </div>
+    
+                    {/* <div class="secondaryContainer">
+                        <div class="secondaryHeader">
+                            <h2>
                                 Projects
                             </h2>
                         </div>
@@ -52,33 +63,8 @@ export const Resume = () => {
                             <Calendar />
                             <div class="projectSeparator"></div>
                             <TicTacTo />
-                            {/* <div class="projectContainer">
-                                <h3>Salary Calculator</h3>
-                                <p>
-                                    This was my first big project with a server. It was pretty cool to see, and learn all the things it takes to set them up.
-                                    Realizing that it's not as simple as just passing along data.
-                                </p>
-                                <p class="projectLink"><a href="https://github.com/j3nkii/weekend-jquery-salary-calculator">GitHubRepo</a></p>
-                                <p class="projectLink"><a href="https://j3nkii.github.io/weekend-jquery-salary-calculator/">Deployment</a></p>
-                            </div> -->
-    
-                            <!-- <div class="projectSeparator"></div>
-    
-                            <div class="projectContainer">
-                                <h3>calCulator 3000</h3>
-                                <p>
-                                    This one was pretty fun, I got to explore array mutation, recursion, and RegExp. Simple Calculator, that follows the order of operations, minus 
-                                    parentheses and exponents.... I'm still working on it... :D
-                                </p>
-                                <form id="calcForm">
-                                    <input id="calcInput" value="7*7*7">
-                                    <button id="calcSub">=</button>
-                                </form>
-                                <p class="projectLink"><a href="https://github.com/j3nkii/weekend-jquery-server-calculator">GitHubRepo</a></p>
-                            </div> --> */}
-    
                         </div>
-                    </div>
+                    </div> */}
                 </div>
     )
 }
