@@ -45,7 +45,7 @@ export const Resume = () => {
                             </h2>
                         </div>
                         <div class="secondaryBody">
-                            Currently working on updating this site along with my resume.
+                            <p>Currently working on updating my project list along with my resume.</p>
                         </div>
                     </div>
     
