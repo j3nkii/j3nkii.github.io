@@ -204,3 +204,24 @@ justify-content: space-around;}
     display: flex;
     align-items: center;
 }
+
+
+/* ################################################################# */
+/* ################################################################# */
+/* ######################################################## EXP CARD */
+
+.exp-card ul{
+    font-size: 1.3rem;
+    margin: 4px;
+    margin-left: 18px;
+    padding: 4px;
+    list-style: disc outside;
+}
+
+.exp-card-footer{
+    font-size: 1.1rem;
+    text-decoration: underline;
+    text-align: center;
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+}
