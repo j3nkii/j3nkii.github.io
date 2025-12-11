@@ -9,7 +9,7 @@ export const About = () => {
         <div class = "container" id="left">
             <div id="nameTitle">
                 <h1>Jacob Larson</h1>
-                <p>Software Engineer</p>
+                <p>Software Engineer | Minneapolis, MN</p>
             </div>
                 <div id="profilePicContainer">
                     <img id="profilePic" src={profilePic} />
