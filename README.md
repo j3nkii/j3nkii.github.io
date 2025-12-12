@@ -16,14 +16,14 @@ Full-stack engineer who takes projects from concept to production. Built booking
 **April 2022 – Present | Remote**
 
 #### Conductive Digital (May 2022 – Present)
-- Built CSV-based availability management system with tenant configuration, allowing non-technical staff to upload and manage appointment schedules
+- Built CSV-based availability management system with tenant configuration, allowing integration with existing workflow systems.
 - Developed availability engine integrating multiple data sources to power standalone customer booking interface
 - Modernized legacy React codebase by refactoring class components to functional components with hooks, improving code maintainability and allowing the use of modern React tools
 
 **Technologies:** React, TypeScript, Node.js, Kendo UI, MySQL, AWS
 
 #### EazieBook (April 2022 – March 2023)
-- Integrated Stripe Connect API for multi-tenant marketplace, managing vendor onboarding, split payments, customer storage, and refund processing across connected accounts
+- Integrated white glove Stripe Connect API for multi-tenant marketplace, managing tenant onboarding and full payment flow including delayed intents
 - Built dynamic pricing calculator supporting seasonal rates, tiered discounts, add-ons, tax calculations, and automated fee reconciliation across bookings
 - Implemented automated payment processing via CRON jobs, collecting scheduled final payments 48 hours before booking dates and expiring stale pending approvals
 
